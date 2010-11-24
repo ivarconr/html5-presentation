@@ -12,9 +12,6 @@ $(function() {
         html5team4.webdb.addPost(post);
         publishPost(post);
     
-    	$('#addPost').slideToggle(150, null);
-      
-
       return false;
     });
 
