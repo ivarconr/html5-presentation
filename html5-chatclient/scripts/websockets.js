@@ -39,7 +39,7 @@ $(function() {
 				});
 
 				if(toRemove != -1) {
-					users.remove(toRemove)
+					users.splice(toRemove, 1)
 				}
 				updateUserList();
 	 		}
