@@ -6,12 +6,13 @@ $(function() {
     $('form#addPost').submit(function(obj) {
         
     	var nick = ourUsername;
-    	var content = $('#content').val();
+    	var content = $('#content');
+		var text = content.val();
             
-    	var post = {nick: nick, content: content};
+    	var post = {nick: nick, content: text};
         html5team4.webdb.addPost(post);
         publishPost(post);
-		  cont.val('');
+		  content.val('');
     
       return false;
     });
