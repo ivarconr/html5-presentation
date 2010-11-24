@@ -41,7 +41,7 @@ html5team4.webdb.createTable = function() {
 //Select
 html5team4.webdb.getAllPosts = function(renderFunc) {
     html5team4.webdb.db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM posts order by id asc', [], renderFunc,
+        tx.executeSql('SELECT * FROM posts order by id desc', [], renderFunc,
                 html5team4.webdb.onError);
     });
 }
@@ -116,10 +116,10 @@ function renderPost(post) {
 }
 
 function scroll_down() {
-    var div = document.getElementById("articleContainer");
+/*    var div = document.getElementById("articleContainer");
     // increase the scroll position by 10 px every 10th of a second
    if (div.scrollTop < div.scrollHeight - div.clientHeight) {
             div.scrollTop += div.scrollHeight; // move down
-    }
+    }*/
 }
 

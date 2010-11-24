@@ -134,9 +134,12 @@ div#contentArea {
 }
 
 div#articleContainer {
-    height: 400px;
     overflow: auto;
     background: white;
+    top: 80px;
+    bottom: 60px;
+    width: 617px;
+    position: fixed;
 }
 
 div#contentArea > header > h2 {
