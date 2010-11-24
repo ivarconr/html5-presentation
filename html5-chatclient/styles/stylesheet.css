@@ -73,7 +73,8 @@ div#mainWrap {
 }
 
 #adminAddPost {
-	margin-top: 8px;
+    margin-top: 8px;    
+    bottom: 60px;
 }
 
 #adminAddPost section {
@@ -84,8 +85,9 @@ div#mainWrap {
     padding-top: 10px;
     background: #CCC;
     margin-bottom: 0;
-    bottom: 60px; /*position: absolute;*/
+    bottom: 60px; 
     width: 600px;
+    position: fixed;
 }
 
 #adminAddPost #content {
@@ -147,10 +149,6 @@ div#contentArea > p {
     font-size: .85em;
 }
 
-.adminBar {
-    float: right;
-}
-
 a {
     text-decoration: none;
     color: #AD1443;
@@ -160,7 +158,7 @@ a:hover {
     text-decoration: underline;
 }
 
-article header, article .adminBar, footer {
+article header, footer {
 /*position: absolute;*/
     bottom: 0;
     margin: 0px;
@@ -179,6 +177,8 @@ footer {
     color: #FFF;
     padding: 20px 0;
     height: 20px;
+    position: fixed;
+    bottom: 0;
 }
 
 .column {

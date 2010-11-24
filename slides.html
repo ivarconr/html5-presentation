@@ -73,21 +73,44 @@
 
 
       <section>
-        <h2>This is a h2</h2>
-        <p>This is a p</p>
+        <h1>WEB Storage 1/2</h1>
+        <pre>
+window.localStorage.setItem('value', area.value);
+var value = window.localStorage.getItem('value');
+</pre>
       </section>
 
       <section>
-        <h1>An image</h1>git 
+        <h1>WEB Storage (2/2)</h1>
+	<br />
+	<textarea id="text-area" placeholder="Type your text here..." style="width: 300px;font-size: 26px;"></textarea> <br />
+	<button id="save-ta" onclick="save_click();" style="width: 305px;font-size: 20px;">Save</button>  
+	<script> 
+	  
+	  // place content from previous edit
+	  var area = document.querySelector('#text-area');
+	  if (!area.value) {
+	    area.innerHTML = window.localStorage.getItem('value');
+	  }	  	  
+	  // your content will be saved locally
+	  function save_click() {
+	    var area = document.querySelector('#text-area');
+	    window.localStorage.setItem('value', area.value);
+	  }	   
+	</script> 
       </section>
 
       <section>
-        <h1>A list</h1>
+        <h1>WEB SQL</h1>
+        TODO!
+      </section>
+      <section>
+        <h1>WEB Workers</h1>
         <ul>
-          <li>Foo</li>
-          <li>Bar</li>
-          <li>Foobar</li>
-        </ul>
+	  <li>Tråder</li>
+	  <li>Kan ikke akksessere dom</li>
+	  <li>...</li>
+	</ul>
       </section>
 
       <section>
