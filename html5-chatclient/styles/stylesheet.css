@@ -37,10 +37,12 @@ header#pageHead {
     background: #333;
     width: 100%;
     padding-bottom: 20px;
+    
 }
 
 header#pageHead div {
-    margin: 0 auto; /*width: 910px;*/
+    margin: 0 auto; 
+    width: 100px;
 }
 
 h1 {
