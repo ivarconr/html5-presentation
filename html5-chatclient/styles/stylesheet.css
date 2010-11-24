@@ -1,39 +1,48 @@
-article, nav, header, section, footer, aside { display: block; }
-div.clear { clear: both; }
-* { margin: 0; padding: 0; }
-body { 
-  background: #eeebec; 
-  margin: auto; 
-  font-family: arial, helvetica, sans-serif; 
+article, nav, header, section, footer, aside {
+    display: block;
 }
 
+div.clear {
+    clear: both;
+}
 
-@font-face {
-	font-family: 'Harabara';
-	src: url('fonts/Harabara.ttf');
-	src: local('?'), url('fonts/Harabara.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eeebec;
+    margin: auto;
+    font-family: arial, helvetica, sans-serif;
+}
+
+@font-face
+{
+    font-family: 'Harabara';
+    src: url('fonts/Harabara.ttf');
+    src: local('?'), url('fonts/Harabara.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 aside {
-  float: left;
-  width: 150px;
-  /*border: 1px solid black;*/
-  background: #CCC;
+    float: left;
+    width: 150px; /*border: 1px solid black;*/
+    background: #CCC;
 }
 
 header#pageHead {
-  display: block; 
-  background: #333;
-  width: 100%;
-  padding-bottom: 20px;
+    display: block;
+    background: #333;
+    width: 100%;
+    padding-bottom: 20px;
 }
 
 header#pageHead div {
-    margin: 0 auto;
-    /*width: 910px;*/
+    margin: 0 auto; /*width: 910px;*/
 }
+
 h1 {
     font-size: 50px;
     color: #FFF;
@@ -46,83 +55,108 @@ h1 {
 
 div#mainWrap {
     padding: 0 20px 20px 20px;
-    margin: auto; 
+    margin: auto;
     border: 0.01em solid #ccc;
     width: 800px;
 }
 
-
-#addPostLink { 
-display: block; text-align: center; color: #282; font-weight: bold; text-decoration: none; }
-#addPost { padding: 0 20px 20px 20px;  }
-#adminAddPost section { 
-  border: 1px solid #333; 
-  border-bottom: 0; 
-  border-top-left-radius: 10px; 
-  border-top-right-radius: 10px; 
-  padding-top: 10px; 
-  background: #CCC; 
-  margin-bottom: 0;
-  bottom: 60px;
-  /*position: absolute;*/
-  width: 600px;
+#addPostLink {
+    display: block;
+    text-align: center;
+    color: #282;
+    font-weight: bold;
+    text-decoration: none;
 }
 
+#addPost {
+    padding: 0 20px 20px 20px;
+}
 
-#adminAddPost #content { 
-  width: 500px;
-  height: 100px; 
+#adminAddPost section {
+    border: 1px solid #333;
+    border-bottom: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 10px;
+    background: #CCC;
+    margin-bottom: 0;
+    bottom: 60px; /*position: absolute;*/
+    width: 600px;
+}
+
+#adminAddPost #content {
+    width: 500px;
+    height: 100px;
 
 }
+
 input[type=submit] {
-  display: block; 
-  padding: 5px 20px; 
-  margin: 10px 0 0 0; 
+    display: block;
+    padding: 5px 20px;
+    margin: 10px 0 0 0;
 }
 
-article h2 { 
-color: #333; 
-font-size: 15px;
-display: inline;
-margin-right: 5px;
+article h2 {
+    color: #333;
+    font-size: 15px;
+    display: inline;
+    margin-right: 5px;
 }
+
 article {
-  float: left; 
-  border: 1px solid #CCC2A9; 
-  border-radius: 10px; 
-  margin: 3px;
-  background: #FFF234;
-  width: 80%;
+    float: left;
+    border: 1px solid #CCC2A9;
+    border-radius: 10px;
+    margin: 3px;
+    background: #FFF234;
+    width: 80%;
 }
 
-
-article.our { 
-  float: right;
-  background: #FFAA00;
+article.our {
+    float: right;
+    background: #FFAA00;
 }
 
-article > ol, article > ul, ul#recentPosts { margin: 1em 20px; }
+article > ol, article > ul, ul#recentPosts {
+    margin: 1em 20px;
+}
 
-div#contentArea { 
-  float: right;
-  width: 600px;
- }
+div#contentArea {
+    float: right;
+    width: 600px;
+}
 
 div#articleContainer {
-  height: 400px;
-  overflow: auto;
-  background: white;
+    height: 400px;
+    overflow: auto;
+    background: white;
 }
 
-div#contentArea > header > h2 { padding-top: 1em; color: #333;}
-div#contentArea > p { line-height: 1.6; font-size: .85em; }
-.adminBar { float: right; }
+div#contentArea > header > h2 {
+    padding-top: 1em;
+    color: #333;
+}
 
-a { text-decoration: none; color: #AD1443; }
-a:hover { text-decoration: underline; }
+div#contentArea > p {
+    line-height: 1.6;
+    font-size: .85em;
+}
+
+.adminBar {
+    float: right;
+}
+
+a {
+    text-decoration: none;
+    color: #AD1443;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 
 article header, article .adminBar, footer {
-    /*position: absolute;*/
+/*position: absolute;*/
     bottom: 0;
     margin: 0px;
     padding-bottom: 10px;
@@ -133,12 +167,13 @@ article header, article .adminBar, footer {
     width: 100%;
 }
 
-footer { 
-clear: both; 
-background: #333; 
-text-align: center; 
-color: #FFF; padding: 20px 0; 
-height: 20px;
+footer {
+    clear: both;
+    background: #333;
+    text-align: center;
+    color: #FFF;
+    padding: 20px 0;
+    height: 20px;
 }
 
 .column {
@@ -154,6 +189,13 @@ span.small {
     font-style: italic;
 }
 
-canvas#logo {  float: left; background-color: #333; }
+canvas#logo {
+    float: left;
+    background-color: #333;
+}
 
-video { width: 500px; margin: 1em auto; display: block;}
+video {
+    width: 500px;
+    margin: 1em auto;
+    display: block;
+}
