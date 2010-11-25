@@ -11,8 +11,7 @@ $(function() {
             
     	var post = {nick: nick, content: text, owner: true};
         html5team4.webdb.addPost(post);
-	
-	post.owner = false;        
+	      
 	publishPost(post);
         content.val('');
     

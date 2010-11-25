@@ -57,6 +57,7 @@ html5team4.webdb.getlastPosts = function(num) {
 html5team4.webdb.addPost = function(post) {
     html5team4.webdb.db.transaction(function(tx) {
         var addedOn = new Date();
+	console.debug("storing: " +JSON.stringify(post));
         tx.executeSql('INSERT INTO posts(nick, content, added_on, owner) VALUES (?,?,?,?)',
                 [post.nick, post.content, addedOn, post.owner],
                 html5team4.webdb.onSuccess,
@@ -103,8 +104,9 @@ function renderLastPosts(tx, rs) {
 }
 
 function renderPost(post) {
+    console.debug(post);
     var article = $('<article>');
-    if(post.owner) {
+    if(post.owner === 'true') {
       article.addClass("our");
     }
     var header = $('<header>');
