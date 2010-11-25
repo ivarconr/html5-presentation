@@ -20,7 +20,7 @@ $(function() {
 	 			console.log(frame.user + " said: " + frame.payload);
 				var post = JSON.parse(frame.payload);
 				post.owner = false;
-	 			html5team4.webdb.addPost(post);
+	 			webdb.addPost(post);
 	 		}
 	 	}
 

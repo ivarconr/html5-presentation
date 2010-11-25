@@ -1,88 +1,72 @@
 $(function() {
-    //Init DB stuff
     init_db();
 });
 
-function addDeleteEventListener(event) {
-        console.log("Remove");
-        $(event.currentTarget).parent().parent().fadeOut(200);
-        var postId = $(this).attr('id');
-        console.log(postId);
-        html5team4.webdb.deletePost(postId);
+//Initializes database and render data
+function init_db() {
+    webdb.open();
+    webdb.createTable();
+    webdb.getAllPosts(loadPosts);
 }
 
-//DB stuff
 
-//Step 1
-var html5team4 = {};
-html5team4.webdb = {};
+webdb = {};
+webdb.db = null;
 
-//Step 2
-html5team4.webdb.db = null;
-
-html5team4.webdb.open = function() {
+webdb.open = function() {
     var dbSize = 5 * 1024 * 1024; // 5MB
-    html5team4.webdb.db = openDatabase('chat', '1.0', 'post mangager', dbSize);
-    console.debug(html5team4.webdb.db);
+    webdb.db = openDatabase('chat', '1.0', 'post mangager', dbSize);
+    console.debug(webdb.db);
 }
 
-html5team4.webdb.onError = function(tx, e) {
+webdb.onError = function(tx, e) {
     alert('Something unexpected happened: ' + e.message);
 }
 
-html5team4.webdb.onSuccess = function(tx, r) {
-    html5team4.webdb.getAllPosts(loadPosts);
+webdb.onSuccess = function(tx, result) {
+    console.debug(result.insertId);
+    webdb.getPost(result.insertId, loadPost);
 }
 
 //Create Table
-html5team4.webdb.createTable = function() {
-    html5team4.webdb.db.transaction(function(tx) {
+webdb.createTable = function() {
+    webdb.db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
                 'posts(ID INTEGER PRIMARY KEY ASC, nick TEXT, content TEXT, added_on DATETIME, owner BOOLEAN)', []);
     });
     console.debug("table crated");
 }
 
-//Select
-html5team4.webdb.getAllPosts = function(renderFunc) {
-    html5team4.webdb.db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM posts order by id desc', [], renderFunc,
-                html5team4.webdb.onError);
+//Select all chat posts
+webdb.getAllPosts = function(renderFunc) {
+    webdb.db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM posts order by id desc', [], renderFunc, webdb.onError);
     });
 }
 
-html5team4.webdb.getlastPosts = function(num) {
-    html5team4.webdb.db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM posts order by id desc limit 5', [], renderLastPosts,
-                html5team4.webdb.onError);
+//Select chat posts
+webdb.getPost = function(id, renderFunc) {
+     webdb.db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM posts WHERE ID=?', [id], renderFunc, webdb.onError);
     });
 }
 
-//Insert
-html5team4.webdb.addPost = function(post) {
-    html5team4.webdb.db.transaction(function(tx) {
-        var addedOn = new Date();
+//Insert new chat post
+webdb.addPost = function(post) {
+    webdb.db.transaction(function(tx) {
 	console.debug("storing: " +JSON.stringify(post));
         tx.executeSql('INSERT INTO posts(nick, content, added_on, owner) VALUES (?,?,?,?)',
-                [post.nick, post.content, addedOn, post.owner],
-                html5team4.webdb.onSuccess,
-                html5team4.webdb.onError);
+                [post.nick, post.content, post.addedOn, post.owner],
+                webdb.onSuccess,
+                webdb.onError);
     });
 }
 
 //Delete
-html5team4.webdb.deletePost = function(id) {
-    html5team4.webdb.db.transaction(function(tx) {
-        tx.executeSql('DELETE FROM posts WHERE ID=?', [id],
-                null, html5team4.webdb.onError);
+webdb.deletePost = function(id) {
+    webdb.db.transaction(function(tx) {
+        tx.executeSql('DELETE FROM posts WHERE ID=?', [id], null, webdb.onError);
     });
-}
-
-//Initializes database and render data
-function init_db() {
-    html5team4.webdb.open();
-    html5team4.webdb.createTable();
-    html5team4.webdb.getAllPosts(loadPosts);
 }
 
 //Render posts function
@@ -92,39 +76,14 @@ function loadPosts(tx, rs) {
     article.empty();
     
     for (var i = 0; i < rs.rows.length; i++) {
-        article.append(renderPost(rs.rows.item(i)));
+        article.append(renderPost(rs.rows.item(i), true));
     }
-    scroll_down();
 }
-
-// Render last X posts
-function renderLastPosts(tx, rs) {
-    console.log("renderlast");
-    var recentPostsUl = $('ul#recentPosts');
+function loadPost(tx, rs) {    
+    console.debug(rs);
     for (var i = 0; i < rs.rows.length; i++) {
-        var li = $('<li>');
-        li.html(rs.rows.item(i).title);
-        recentPostsUl.append(li);
+        addPost(rs.rows.item(i));
     }
 }
 
-function renderPost(post) {
-    var article = $('<article>');
-    if(post.owner === 'true') {
-      article.addClass("our");
-    }
-    var header = $('<header>');
-    header.append($('<h2>'+post.nick+'</h2>'));
-    header.append($('Published<time datetime="'+post.added_on+'">'+post.added_on+'</time>'));
-    article.append(header).append($('<p>'+post.content+'</p>'));
-    return article;
-}
-
-function scroll_down() {
-/*    var div = document.getElementById("articleContainer");
-    // increase the scroll position by 10 px every 10th of a second
-   if (div.scrollTop < div.scrollHeight - div.clientHeight) {
-            div.scrollTop += div.scrollHeight; // move down
-    }*/
-}
 

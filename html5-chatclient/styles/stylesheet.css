@@ -146,6 +146,16 @@ article.our {
 	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
 }
 
+article.history {
+  color: #e9e9e9;
+	border: solid 1px #555;
+	background: #6e6e6e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#888));
+	background: -moz-linear-gradient(top,  #575757,  #888);
+}
+
+
+
 article > ol, article > ul, ul#recentPosts {
     margin: 1em 20px;
 }
