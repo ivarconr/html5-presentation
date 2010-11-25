@@ -1,7 +1,7 @@
 $(function () {
-	var filesUpload = document.getElementById("files-upload"),
-		dropArea = document.getElementById("drop-area"),
-		fileList = document.getElementById("file-list");
+	var filesUpload = $("#files-upload");
+	var dropArea = $("#drop-area");
+	var fileList = $("#file-list");
 
 	function traverseFiles (files) {
 		var li,
@@ -9,38 +9,43 @@ $(function () {
 			file,
 			reader,
 			fileInfo;
-		fileList.innerHTML = "";
+		fileList.empty();
 
 		for (var i=0, il=files.length; i<il; i++) {
-			li = document.createElement("li");
+			if (!f.type.match('image.*')) {
+				continue;
+			}
+
+			li = $("<li>");
 			file = files[i];
 
-			if (typeof FileReader !== "undefined") {
-				img = document.createElement("img");
-				img.setAttribute("class", "thumbnail");
-				reader = new FileReader();
-				reader.onload = (function (theImg) {
-					return function (evt) {
-						theImg.src = evt.target.result;
-					};
-				}(img));
-				reader.readAsDataURL(file);
-			}
+			img = $("<img>");
+			img.addClass("thumbnail");
+			reader = new FileReader();
+			reader.onload = (function (theImg) {
+				return function (evt) {
+					theImg.src = evt.target.result;
+				};
+			}(img));
+			reader.readAsDataURL(file);
 
          // Send fila her med xhr...
 
-			fileInfo = "<div style='display: none;'id='" + file.size + "'>";
-			fileInfo += "<div>Name: " + file.name + "</div>";
-			fileInfo += "<div>Size: " + parseInt(file.size / 1024, 10) + " kb</div>";
-			fileInfo += "<div>Type: " + file.type + "</div>";
-			fileInfo += "</div>";
-			li.innerHTML = fileInfo;
+			var fileInfo = $("<div>");
+			fileInfo.css("display", "none");
+			fileInfo.attr("id", file.size);
+
+			fileInfo.append($("<div>").append("Name: " + file.name));
+			fileInfo.append($("<div>").append("Size: " + parseInt(file.size/1024, 10)));
+			fileInfo.append($("<div>").append("Type: " + file.type));
+			
+			li.append(fileInfo);
 
 			if (typeof img !== "undefined") {
-				li.appendChild(img);
+				li.append(img);
 				
 			}
-			fileList.appendChild(li);
+			fileList.append(li);
 			$('#' + file.size).fadeIn("slow");
 		}
 	};
@@ -49,24 +54,24 @@ $(function () {
 		traverseFiles(this.files);
 	};
 
-	dropArea.addEventListener("dragleave", function (evt) {
+	dropArea.get(0).addEventListener("dragleave", function (evt) {
 		this.className = "";
 		evt.preventDefault();
 		evt.stopPropagation();
 	}, false);
 
-	dropArea.addEventListener("dragenter", function (evt) {
+	dropArea.get(0).addEventListener("dragenter", function (evt) {
 		this.className = "over";
 		evt.preventDefault();
 		evt.stopPropagation();
 	}, false);
 
-	dropArea.addEventListener("dragover", function (evt) {
+	dropArea.get(0).addEventListener("dragover", function (evt) {
 		evt.preventDefault();
 		evt.stopPropagation();
 	}, false);
 
-	dropArea.addEventListener("drop", function (evt) {
+	dropArea.get(0).addEventListener("drop", function (evt) {
 		traverseFiles(evt.dataTransfer.files);
 		evt.preventDefault();
 		evt.stopPropagation();

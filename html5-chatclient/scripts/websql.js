@@ -46,7 +46,7 @@ webdb.getAllPosts = function(renderFunc) {
 
 //Select chat posts
 webdb.getPost = function(id, renderFunc) {
-     webdb.db.transaction(function(tx) {
+    webdb.db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM posts WHERE ID=?', [id], renderFunc, webdb.onError);
     });
 }
@@ -54,7 +54,7 @@ webdb.getPost = function(id, renderFunc) {
 //Insert new chat post
 webdb.addPost = function(post) {
     webdb.db.transaction(function(tx) {
-	console.debug("storing: " +JSON.stringify(post));
+        console.debug("storing: " + JSON.stringify(post));
         tx.executeSql('INSERT INTO posts(nick, content, added_on, owner) VALUES (?,?,?,?)',
                 [post.nick, post.content, post.addedOn, post.owner],
                 webdb.onSuccess,
@@ -74,12 +74,12 @@ function loadAllPosts(tx, rs) {
     var rowOutput = "";
     var article = $('#articleContainer');
     article.empty();
-    
+
     for (var i = 0; i < rs.rows.length; i++) {
         article.append(renderPost(rs.rows.item(i), true));
     }
 }
-function loadPost(tx, rs) {    
+function loadPost(tx, rs) {
     console.debug(rs);
     for (var i = 0; i < rs.rows.length; i++) {
         addPost(rs.rows.item(i));
