@@ -34,7 +34,7 @@ function renderPost(post, history) {
     var header = $('<header>');
     header.append($('<h2>'+post.nick+' says:</h2>'));
     header.append($('Published<time datetime="'+date+'">'+
-	date.getDay()+'.'+date.getMonth()+'.'+date.getFullYear()+' - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+''+'</time>'));
+	date.getDay()+'.'+date.getMonth()+'.'+date.getFullYear()+' &nbsp; '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+''+'</time>'));
     article.append(header).append($('<p>'+post.content+'</p>'));
     return article;
 }
