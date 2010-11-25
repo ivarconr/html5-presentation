@@ -48,6 +48,11 @@
 	<p>Kristoffer, Kris-Mikael og Ivar</p>
       </section>
 
+<!--
+
+Kristoffer-slides 
+
+-->
       <section>
         <h1>HTML5</h1>
 	<pre>
@@ -76,7 +81,56 @@
         <img src="images/html-semantics-2.png" width="500px" />
       </section>
 
+      <section data-onload="playVideo"
+               data-onunload="stopVideo">
+        <script>
+          // |section| referes to this section element
+          function playVideo(section) {
+            section.querySelector("video").play();
+          }
+          function stopVideo(section) {
+            section.querySelector("video").pause();
+          }
+        </script>
+        <h1>A video</h1>
+        <video controls autobuffer preload src="http://demos.hacks.mozilla.org/openweb/LONDONPROJECT/fight.ogv"></video>
+      </section>
 
+<!--
+
+KM-slide
+
+-->
+
+      <section>
+        <h1>Drag drop</h1>
+      </section>
+
+<!--
+
+Ivar-slide
+
+-->
+
+      <section>
+        <h1>Workers</h1>
+      </section>
+
+<!--
+
+KM-slide
+
+-->
+
+      <section>
+        <h1>Websockets</h1>
+      </section>
+
+<!--
+
+Ivar-slides
+
+-->
       <section>
         <h1>WEB Storage 1/2</h1>
         <pre>
@@ -128,20 +182,6 @@ window.onload = function() {
       </section>
 
 
-      <section data-onload="playVideo"
-               data-onunload="stopVideo">
-        <script>
-          // |section| referes to this section element
-          function playVideo(section) {
-            section.querySelector("video").play();
-          }
-          function stopVideo(section) {
-            section.querySelector("video").pause();
-          }
-        </script>
-        <h1>A video</h1>
-        <video controls autobuffer preload src="http://demos.hacks.mozilla.org/openweb/LONDONPROJECT/fight.ogv"></video>
-      </section>
 
       <section>
         <p>the end :)</p>
