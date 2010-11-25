@@ -29,15 +29,19 @@ $(function () {
 
          // Send fila her med xhr...
 
-			fileInfo = "<div>Name: " + file.name + "</div>";
+			fileInfo = "<div style='display: none;'id='" + file.size + "'>";
+			fileInfo += "<div>Name: " + file.name + "</div>";
 			fileInfo += "<div>Size: " + parseInt(file.size / 1024, 10) + " kb</div>";
 			fileInfo += "<div>Type: " + file.type + "</div>";
+			fileInfo += "</div>";
 			li.innerHTML = fileInfo;
 
 			if (typeof img !== "undefined") {
 				li.appendChild(img);
+				
 			}
 			fileList.appendChild(li);
+			$('#' + file.size).fadeIn("slow");
 		}
 	};
 
