@@ -6,7 +6,7 @@ $(function() {
 function init_db() {
     webdb.open();
     webdb.createTable();
-    webdb.getAllPosts(loadPosts);
+    webdb.getAllPosts(loadAllPosts);
 }
 
 
@@ -70,7 +70,7 @@ webdb.deletePost = function(id) {
 }
 
 //Render posts function
-function loadPosts(tx, rs) {
+function loadAllPosts(tx, rs) {
     var rowOutput = "";
     var article = $('#articleContainer');
     article.empty();
