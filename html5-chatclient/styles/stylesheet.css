@@ -56,10 +56,11 @@ h1 {
     font-size: 50px;
     color: #FFF;
     margin-top: 5px;
-    text-shadow: #777 -2px -1px;
+    text-shadow: #777 5px 5px;
     font-family: 'Harabara', "century gothic", Arial, sans-serif;
     width: 400px;
     float: left;
+    letter-spacing: 5px;
 }
 
 div#mainWrap {
@@ -78,7 +79,7 @@ div#mainWrap {
 }
 
 #addPost {
-    padding: 0 20px 20px 20px;
+    padding: 0 20px 0 20px;
 }
 
 #adminAddPost {
@@ -106,14 +107,17 @@ div#mainWrap {
 
 #adminAddPost #content {
     width: 500px;
-    height: 100px;
+    height: 60px;
+    padding: 5px;
+    
 
 }
-
 input[type=submit] {
     display: block;
     padding: 5px 20px;
-    margin: 10px 0 0 0;
+    float: right;
+    width: 150px; 
+    border-radius: 5px;
 }
 
 article h2 {

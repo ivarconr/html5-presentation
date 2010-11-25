@@ -156,19 +156,16 @@ Ivar-slides
 localStorage.setItem('value', area.value);
 localStorage.getItem('value');
 localStorage.removeItem('value');
-localStorage.clear();
-
-
-</pre>
+localStorage.clear();</pre>
       </section>
       <section>
         <h1>WEB Storage (3/4)</h1>
         <pre>
-// Iterating over keys
-for (var i=0, il=localStorage.length; i<il; i++) {
-  console.log("%s = %s", localStorage.key(i), localStorage.getItem(localStorage.key(i)));
+for (var i=0, il=localStorage.length; i&#8249;il; i++) {
+  console.log("%s = %s", 
+    localStorage.key(i),  
+    localStorage.getItem(localStorage.key(i)));
 }
-
 </pre>
       </section>
 

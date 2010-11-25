@@ -1,6 +1,7 @@
 $(function() {
     $('#addPostLink').click(function() {
         $('#addPost').slideToggle(150, null);
+	return false;
     });
 
     $('form#addPost').submit(function(obj) {
