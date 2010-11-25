@@ -33,7 +33,7 @@ html5team4.webdb.onSuccess = function(tx, r) {
 html5team4.webdb.createTable = function() {
     html5team4.webdb.db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
-                'posts(ID INTEGER PRIMARY KEY ASC, nick TEXT, content TEXT, added_on DATETIME)', []);
+                'posts(ID INTEGER PRIMARY KEY ASC, nick TEXT, content TEXT, added_on DATETIME, owner BOOLEAN)', []);
     });
     console.debug("table crated");
 }
@@ -57,8 +57,8 @@ html5team4.webdb.getlastPosts = function(num) {
 html5team4.webdb.addPost = function(post) {
     html5team4.webdb.db.transaction(function(tx) {
         var addedOn = new Date();
-        tx.executeSql('INSERT INTO posts(nick, content, added_on) VALUES (?,?, ?)',
-                [post.nick, post.content, addedOn],
+        tx.executeSql('INSERT INTO posts(nick, content, added_on, owner) VALUES (?,?,?,?)',
+                [post.nick, post.content, addedOn, post.owner],
                 html5team4.webdb.onSuccess,
                 html5team4.webdb.onError);
     });
@@ -103,9 +103,8 @@ function renderLastPosts(tx, rs) {
 }
 
 function renderPost(post) {
-
     var article = $('<article>');
-    if(post.nick == ourUsername) {
+    if(post.owner) {
       article.addClass("our");
     }
     var header = $('<header>');
