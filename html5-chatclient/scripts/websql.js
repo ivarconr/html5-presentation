@@ -15,7 +15,7 @@ webdb.db = null;
 
 webdb.open = function() {
     var dbSize = 5 * 1024 * 1024; // 5MB
-    webdb.db = openDatabase('chat', '1.0', 'post mangager', dbSize);
+    webdb.db = openDatabase('chat', '1.0', 'FancyChat database', dbSize);
     console.debug(webdb.db);
 }
 
