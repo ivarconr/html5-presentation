@@ -6,16 +6,21 @@
 ************************************
 */
 
+$(function() {
 function init() {
 var firstFrame = window.location.hash? parseInt(window.location.hash.split("#")[1], 10) : 1;
 var title = document.querySelector("title").textContent;
 var slides = document.querySelectorAll("body > section");
+// omg !!!!!!!!!!! denne tok way altfor lang tid aa finne
+$("section").wrapInner("<div></div>");
 for (var i = 1, il = slides.length; i <= il; i++) {
   // FIXME : Mandatory for flex box model for vertical align
   // Firefox bug :(
-  slides[i - 1].innerHTML = "<div>" + slides[i - 1].innerHTML + "</div>";
+
+  //slides[i - 1].innerHTML = "<div>" + slides[i - 1].innerHTML + "</div>";
   window.history[(i == 1? 'replace' : 'push') + 'State'](i, title + " ("+ i +"/"+ il +")", "#"+i);
 }
+
 
 var footer = document.createElement("footer");
 footer.id = "footer";
@@ -91,3 +96,4 @@ if (   e.keyCode == 78 // n
   history.forward();
 }
 }, true);
+});
