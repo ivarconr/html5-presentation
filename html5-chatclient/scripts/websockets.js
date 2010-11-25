@@ -18,7 +18,9 @@ $(function() {
 	 	subscription.onPublish = function(frame) {
 	 		if (frame.user != ourUsername) {
 	 			console.log(frame.user + " said: " + frame.payload);
-	 			html5team4.webdb.addPost(JSON.parse(frame.payload));
+				var post = JSON.parse(frame.payload);
+				post.owner = false;
+	 			html5team4.webdb.addPost(post);
 	 		}
 	 	}
 

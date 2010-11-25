@@ -104,7 +104,6 @@ function renderLastPosts(tx, rs) {
 }
 
 function renderPost(post) {
-    console.debug(post);
     var article = $('<article>');
     if(post.owner === 'true') {
       article.addClass("our");
