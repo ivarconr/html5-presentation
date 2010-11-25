@@ -14,8 +14,9 @@ webdb = {};
 webdb.db = null;
 
 webdb.open = function() {
+    
     var dbSize = 5 * 1024 * 1024; // 5MB
-    webdb.db = openDatabase('chat', '1.0', 'FancyChat database', dbSize);
+    webdb.db = openDatabase('chat', '1.0', 'Chat DB', dbSize);
     console.debug(webdb.db);
 }
 
@@ -30,6 +31,7 @@ webdb.onSuccess = function(tx, result) {
 
 //Create Table
 webdb.createTable = function() {
+    
     webdb.db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
                 'posts(ID INTEGER PRIMARY KEY ASC, nick TEXT, content TEXT, added_on DATETIME, owner BOOLEAN)', []);

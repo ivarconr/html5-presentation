@@ -23,6 +23,7 @@ $(function() {
 
 
 function renderPost(post, history) {
+    var date = new Date(post.added_on);
     var article = $('<article>');
     if(post.owner === 'true') {
       article.addClass("our");
@@ -31,8 +32,9 @@ function renderPost(post, history) {
       article.addClass("history");
     } 
     var header = $('<header>');
-    header.append($('<h2>'+post.nick+'</h2>'));
-    header.append($('Published<time datetime="'+post.added_on+'">'+post.added_on+'</time>'));
+    header.append($('<h2>'+post.nick+' says:</h2>'));
+    header.append($('Published<time datetime="'+date+'">'+
+	date.getDay()+'.'+date.getMonth()+'.'+date.getFullYear()+' - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+''+'</time>'));
     article.append(header).append($('<p>'+post.content+'</p>'));
     return article;
 }
