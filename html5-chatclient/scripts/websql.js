@@ -1,3 +1,8 @@
+$(function() {
+    //Init DB stuff
+    init_db();
+});
+
 function addDeleteEventListener(event) {
         console.log("Remove");
         $(event.currentTarget).parent().parent().fadeOut(200);

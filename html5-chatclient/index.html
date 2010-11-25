@@ -7,42 +7,41 @@
     <script src="scripts/jquery-ui.min.js"></script>
     <script src="scripts/websql.js"></script>
     <script src="scripts/script.js"></script>
-    <script src="scripts/images.js"></script>
     <script src="scripts/websockets.js"></script>
     <script src="http://km.hosted.hookbox.org/static/hookbox.js"></script>
     <link href="styles/stylesheet.css" rel="stylesheet">
-    <link href="styles/fileupload.css" rel="stylesheet">
-    <link href="styles/slideshow.css" rel="stylesheet">
 </head>
+
 <body>
+
 <header id="pageHead">
     <div>
         <h1>FancyChat</h1>
         <div class="clear"></div>
     </div>
 </header>
-<div id="mainWrap">
-<aside>
-<b>Online users:</b><br/>
-<div id="online_users">
-</div>
-</aside>
-    <div id="contentArea">
-        <div id="articleContainer">
-        </div>
-        <div class="clear"></div>
-        <div id="adminAddPost">
-            <section>
-                <a href="#" id="addPostLink">Chat</a>
 
-                <form id="addPost" method="POST">
-                    <textarea name="content" id="content"></textarea>
-                    <input type="submit" value="Send">
-                </form>
-            </section>
-        </div>
-    </div>
+<div id="mainWrap">
+	<aside>
+		<b>Online users:</b><br/>
+		<div id="online_users"></div>
+	</aside>
+	<div id="contentArea">
+		<div id="articleContainer"></div>
+		<div class="clear"></div>
+		<div id="adminAddPost">
+			<section>
+				<a href="#" id="addPostLink">Chat</a>
+
+				<form id="addPost" method="POST">
+					<textarea name="content" id="content"></textarea>
+					<input type="submit" value="Send">
+				</form>
+			</section>
+		</div>
+	</div>
 </div>
+
 <footer>
     &copy; none. It's free as in beer.
 </footer>
