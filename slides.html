@@ -95,8 +95,27 @@ Ivar-slide
 
 -->
 
+       <section>
+        <h1>WEB Workers (1/2)</h1>
+        <ul>
+	  <li>"Tråder" i JavaScript</li>
+	  <li>Begrenset hva en worker kan gjøre</li>
+	</ul>
+      </section>
       <section>
-        <h1>Workers</h1>
+        <h1>WEB Workers (1/2)</h1>	
+<pre>
+var worker = new Worker('task.js');
+worker.onmessage = function(event) { alert(event.data); };
+worker.postMessage('data');
+</pre>
+task.js:
+<pre>
+self.onmessage = function(event) {
+  // Do some work.
+  self.postMessage("recv'd: " + event.data);
+};
+</pre>
       </section>
 
 <!--
@@ -116,18 +135,41 @@ Ivar-slides
 
 -->
       <section>
-        <h1>WEB Storage 1/2</h1>
+        <h1>WEB Storage (1/4)</h1>
+	<ul>
+		<li>localStorage</li>
+		<li>sessionStorage</li>
+	</ul>
+      </section>
+
+      <section>
+        <h1>WEB Storage (2/4)</h1>
         <pre>
-window.localStorage.setItem('value', area.value);
-var value = window.localStorage.getItem('value');
+localStorage.setItem('value', area.value);
+localStorage.getItem('value');
+localStorage.removeItem('value');
+localStorage.clear();
+
+
+</pre>
+      </section>
+      <section>
+        <h1>WEB Storage (3/4)</h1>
+        <pre>
+// Iterating over keys
+for (var i=0, il=localStorage.length; i<il; i++) {
+  console.log("%s = %s", localStorage.key(i), localStorage.getItem(localStorage.key(i)));
+}
+
 </pre>
       </section>
 
       <section>
-        <h1>WEB Storage (2/2)</h1>
+        <h1>WEB Storage (4/4)</h1>
 	<br />
-	<textarea id="text-area" placeholder="Type your text here..." style="width: 300px;font-size: 26px;"></textarea> <br />
-	<button id="save-ta" onclick="save_click();" style="width: 305px;font-size: 20px;">Save</button>  
+	<textarea id="text-area" placeholder="Type your text here..." style="width: 305px;font-size: 26px;"></textarea> <br />
+	<button onclick="clear_click();" style="width: 152px;font-size: 20px;">Clear</button>  		
+	<button id="save-ta" onclick="save_click();" style="width: 152px;font-size: 20px;">Save</button>	
 	<script> 
 	  
 	  // place content from previous edit
@@ -139,22 +181,30 @@ var value = window.localStorage.getItem('value');
 	  function save_click() {
 	    var area = document.querySelector('#text-area');
 	    window.localStorage.setItem('value', area.value);
-	  }	   
+  	    for (var i=0, il=localStorage.length; i<il; i++) {
+	      console.log("%s = %s", localStorage.key(i), localStorage.getItem(localStorage.key(i)));
+	    }
+	  }	  
+	  function clear_click() {
+	    var area = document.querySelector('#text-area');	    
+	    area.value = "";	    
+	    window.localStorage.clear();	    
+	  }	    
 	</script> 
       </section>
 
       <section>
         <h1>WEB SQL</h1>
-        TODO!
+        
       </section>
       <section>
-        <h1>WEB Workers</h1>
-        <ul>
-	  <li>Tråder</li>
-	  <li>Kan ikke akksessere dom</li>
-	  <li>...</li>
-	</ul>
+        <h1>WEB SQL - open</h1>
+        <pre>
+var dbSize = 5 * 1024 * 1024; // 5MB
+webdb.db = openDatabase('chat', '1.0', 'post mangager', dbSize);
+</pre>
       </section>
+
 
       <section>
         <h1>Some code?</h1>
