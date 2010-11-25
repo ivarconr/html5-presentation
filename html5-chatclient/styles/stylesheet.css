@@ -176,6 +176,10 @@ div#articleContainer {
     position: fixed;
     border-left: 1px solid gray;
 }
+div#articleContainer hr {
+    width: 100%;
+    border:1px dashed gray;
+}
 
 div#contentArea > header > h2 {
     padding-top: 1em;

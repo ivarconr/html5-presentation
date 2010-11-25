@@ -13,8 +13,7 @@ function init_db() {
 webdb = {};
 webdb.db = null;
 
-webdb.open = function() {
-    
+webdb.open = function() {    
     var dbSize = 5 * 1024 * 1024; // 5MB
     webdb.db = openDatabase('chat', '1.0', 'Chat DB', dbSize);
     console.debug(webdb.db);
@@ -30,13 +29,12 @@ webdb.onSuccess = function(tx, result) {
 }
 
 //Create Table
-webdb.createTable = function() {
-    
+webdb.createTable = function() {    
     webdb.db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
                 'posts(ID INTEGER PRIMARY KEY ASC, nick TEXT, content TEXT, added_on DATETIME, owner BOOLEAN)', []);
     });
-    console.debug("table crated");
+    console.debug("post table crated");
 }
 
 //Select all chat posts
@@ -71,18 +69,19 @@ webdb.deletePost = function(id) {
     });
 }
 
-//Render posts function
+//Render posts function (only called by init)
 function loadAllPosts(tx, rs) {
     var rowOutput = "";
     var article = $('#articleContainer');
     article.empty();
-
+    article.append($('<hr>'));
     for (var i = 0; i < rs.rows.length; i++) {
         article.append(renderPost(rs.rows.item(i), true));
     }
 }
+
+//Load post(s) from resultset
 function loadPost(tx, rs) {
-    console.debug(rs);
     for (var i = 0; i < rs.rows.length; i++) {
         addPost(rs.rows.item(i));
     }
