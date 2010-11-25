@@ -1,7 +1,6 @@
 var ourUsername = "none";
 var subscription = null;
 var conn = null;
-var users = [];
 
 $(function() {
    conn = hookbox.connect('http://km.hosted.hookbox.org');
@@ -14,8 +13,7 @@ $(function() {
 		console.log("subscribed and got username " + ourUsername);
 		subscription = _subscription;
 
-	 	users = subscription.presence;
-	 	updateUserList();
+	 	addUsers(subscription.presence);
 
 	 	subscription.onPublish = function(frame) {
 	 		if (frame.user != ourUsername) {
@@ -39,7 +37,6 @@ $(function() {
 });
 
 function publishPost(post) {
-	console.log("skal publishe %o ", post);
 	try {
 		conn.publish("my_events", JSON.stringify(post));
 	} catch (e) {
@@ -47,45 +44,33 @@ function publishPost(post) {
 	}
 }
 
-function updateUserList() {
-	console.debug("update %s users", users.length)
-	var container = $('#online_users');
-	container.empty();
-	$.each(users, function(index, user) { 
-		console.debug("adding %s to online users", user)
-		container.append(user + "<br />");
+
+function addUsers(users) {
+
+	$.each(users, function(index, user) {
+		addUserUnlessExists(user);
 	});
 }
 
 function addUserUnlessExists(username) {
 	var addUser = true;
-	$.each(users, function(index, user) { 
-		if(username == user) {
-			addUser = false;
-			return;
-		}
-	});
+	if($('span#'+username).length > 0) {
+		addUser = false;
+		return;
+	}
 
 	if (addUser == true) {
-		users.push(username);
+		var span = document.createElement('div');
+		span.id = username;
+		span.innerHTML = username;
+		$('#online_users').append(span);
+		$('div#'+username).effect('blind', {mode:"show"}, 1100);
 	}
-	updateUserList();
 }
 
 function removeUser(username) {
-	var toRemove = -1;
-	$.each(users, function(index, user) { 
-	if(username == user) {
-		toRemove = index;
+	var span = $('div#'+username);
+	if (span != undefined) {
+		span.effect('blind', {}, 1100);
 	}
-	});
-
-	if(toRemove != -1) {
-		removeUserByIndex(toRemove);
-	}
-}
-
-function removeUserByIndex(index) {
-	users.splice(index, 1)
-	updateUserList();
 }
