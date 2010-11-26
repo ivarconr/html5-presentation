@@ -47,6 +47,7 @@ $(function () {
 			}
 			fileList.append(li);
 			$('#' + file.size).fadeIn("slow");
+			$('#fileApi').effect("pulsate");
 		}
 	};
 

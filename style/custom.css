@@ -1,22 +1,60 @@
 p#drop-area {
    border: 0.07em solid #ccc;
    height: 100px;
-	margin-top: 30px;
+	margin: 30px 10px;
+	width: 200px;
 }
 
 ul#file-list {
 	list-style: none;	
+	width: 530px;
+	padding: 3px 20px 3px 5px;
+	max-width: 530px;
 }
 
 ul#file-list li {
 	float: right;
 	font-size: 0.6em;
+	margin: 0 5px;
 }
 
 ul#file-list li.no-items {
 	float: none;
 }
 
-p.small {
+div.dropBox {
+	padding: 4px;
+	margin-bottom: 6px;
+	border: 0.07em solid #ccc;
+	width: 550px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-gradient(linear,
+		left bottom,
+		left top,
+		color-stop(0.08, rgb(201,224,210)),
+		color-stop(0.54, rgb(141,252,180))
+	);
+}
+
+div.dropBox p {
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	display: inline-block;
 	font-size: 0.8em;
 }
+
+div.dropBox p.left {
+	margin-top: 70px;
+	float: left;
+}
+
+div.dropBox p.right {
+}
+
+p#fileApi {
+	margin-top: 70px;
+	display: none;
+	float: right;
+}
+

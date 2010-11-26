@@ -218,14 +218,22 @@ KM-slide
 			<li>Ikke nødvendig med plugins. Bye bye flash+silverlight :D</li>
 			<li>Benytter eventlisteners man kan utnytte gjennom javascript</li>
 		</ul>
-      <form method="POST">
-                    <p class="small">Fler om gangen! &raquo;<input id="files-upload" name="file-upload" type="file" multiple></p>
-         <p id="drop-area">
-            dra filer hit!
-         </p>
+      <form>
+			<div class="dropBox">
+         	<p>Multifile &raquo;</p>
+				<input id="files-upload" name="file-upload" type="file" multiple>
+				<p>&laquo; Fler om gangen!</p>
+			</div>
+
+
+			<div class="dropBox">
+				<p class="left">Dra filer hit &raquo;</p>
+         	<p id="drop-area"></p>
+				<p id="fileApi" class="right">&laquo; File API, smooth!</p>
+			</div>
          <ul id="file-list">
-            <li class="no-items">(no filez, please upload)</li>
-         </ul>
+         	<li class="no-items">(no filez, please upload)</li>
+        	</ul>
       </form>
 
    </section>
