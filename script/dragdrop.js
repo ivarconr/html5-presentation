@@ -36,7 +36,7 @@ $(function () {
 			fileInfo.attr("id", file.size);
 
 			fileInfo.append($("<div>").append("Name: " + file.name));
-			fileInfo.append($("<div>").append("Size: " + parseInt(file.size/1024, 10)));
+			fileInfo.append($("<div>").append("Size: " + parseInt(file.size/1024, 10) + "kB"));
 			fileInfo.append($("<div>").append("Type: " + file.type));
 			
 			li.append(fileInfo);
