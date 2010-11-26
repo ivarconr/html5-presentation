@@ -12,12 +12,12 @@ $(function () {
 		fileList.empty();
 
 		for (var i=0, il=files.length; i<il; i++) {
-			if (!f.type.match('image.*')) {
+			file = files[i];
+			if (!file.type.match('image.*')) {
 				continue;
 			}
 
 			li = $("<li>");
-			file = files[i];
 
 			img = $("<img>");
 			img.addClass("thumbnail");
