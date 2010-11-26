@@ -12,12 +12,12 @@ $(function () {
 		fileList.empty();
 
 		for (var i=0, il=files.length; i<il; i++) {
-			if (!f.type.match('image.*')) {
+			file = files[i];
+			if (!file.type.match('image.*')) {
 				continue;
 			}
 
 			li = $("<li>");
-			file = files[i];
 
 			img = $("<img>");
 			img.addClass("thumbnail");
@@ -36,7 +36,7 @@ $(function () {
 			fileInfo.attr("id", file.size);
 
 			fileInfo.append($("<div>").append("Name: " + file.name));
-			fileInfo.append($("<div>").append("Size: " + parseInt(file.size/1024, 10)));
+			fileInfo.append($("<div>").append("Size: " + parseInt(file.size/1024, 10) + "kB"));
 			fileInfo.append($("<div>").append("Type: " + file.type));
 			
 			li.append(fileInfo);
@@ -47,6 +47,7 @@ $(function () {
 			}
 			fileList.append(li);
 			$('#' + file.size).fadeIn("slow");
+			$('#fileApi').effect("pulsate");
 		}
 	};
 
