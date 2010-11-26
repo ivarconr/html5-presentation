@@ -237,14 +237,14 @@ Ivar-slide
 -->
 
        <section>
-        <h1>WEB Workers (1/2)</h1>
+        <h1>Web Workers (1/2)</h1>
         <ul>
 	  <li>"Tråder" i JavaScript</li>
 	  <li>Begrenset hva en worker kan gjøre</li>
 	</ul>
       </section>
       <section>
-        <h1>WEB Workers (1/2)</h1>	
+        <h1>Web Workers (2/2)</h1>	
 <pre>
 var worker = new Worker('task.js');
 worker.onmessage = function(event) { alert(event.data); };
@@ -288,7 +288,7 @@ Ivar-slides
 
 -->
       <section>
-        <h1>WEB Storage (1/4)</h1>
+        <h1>Web Storage (1/4)</h1>
 	<ul>
 		<li>localStorage</li>
 		<li>sessionStorage</li>
@@ -296,7 +296,7 @@ Ivar-slides
       </section>
 
       <section>
-        <h1>WEB Storage (2/4)</h1>
+        <h1>Web Storage (2/4)</h1>
         <pre>
 localStorage.setItem('value', area.value);
 localStorage.getItem('value');
@@ -304,7 +304,7 @@ localStorage.removeItem('value');
 localStorage.clear();</pre>
       </section>
       <section>
-        <h1>WEB Storage (3/4)</h1>
+        <h1>Web Storage (3/4)</h1>
         <pre>
 for (var i=0, il=localStorage.length; i&#8249;il; i++) {
   console.log("%s = %s", 
@@ -315,7 +315,7 @@ for (var i=0, il=localStorage.length; i&#8249;il; i++) {
       </section>
 
       <section>
-        <h1>WEB Storage (4/4)</h1>
+        <h1>Web Storage (4/4)</h1>
 	<br />
 	<textarea id="text-area" placeholder="Type your text here..." style="width: 305px;font-size: 26px;"></textarea> <br />
 	<button onclick="clear_click();" style="width: 152px;font-size: 20px;">Clear</button>  		
@@ -344,17 +344,58 @@ for (var i=0, il=localStorage.length; i&#8249;il; i++) {
       </section>
 
       <section>
-        <h1>WEB SQL</h1>
-        
-      </section>
-      <section>
-        <h1>WEB SQL - open</h1>
-        <pre>
-var dbSize = 5 * 1024 * 1024; // 5MB
-webdb.db = openDatabase('chat', '1.0', 'post mangager', dbSize);
-</pre>
+        <h1>Web SQL Databases</h1>
+	<ul>
+	<li>Asynkron interaksjon</li>
+	<li>SQL-kall køes og kjøres i rekkefølge</li>
+	<li>default size =  5Mb / domain</li>
+	<li>Safari, Chrome, and Opera</li>
+	</ul>        
       </section>
 
+      <section>
+        <h1>Web SQL - open</h1>
+        <pre>
+var dbSize = 5 * 1024 * 1024; // 5MB
+webdb.db = openDatabase(
+  'chat', '1.0', 'FancyChat database', dbSize);
+</pre>
+      </section>
+      <section>
+        <h1>Web SQL - table</h1>
+        <pre>
+webdb.db.transaction(function(tx) {
+  tx.executeSql(
+    'CREATE TABLE IF NOT EXISTS posts(
+      ID INTEGER PRIMARY KEY ASC, nick
+      TEXT, content TEXT, added_on DATETIME, 
+      owner BOOLEAN)');
+});
+</pre>
+      </section>
+      <section>
+        <h1>Web SQL - query</h1>
+        <pre>
+webdb.db.transaction(function(tx) {
+  tx.executeSql(
+    'SELECT * FROM posts WHERE ID=?', 
+    [id], 
+    webdb.onSuccess, 
+    webdb.onError
+  );
+});
+</pre>
+      </section>
+      <section>
+        <h1>IndexDB</h1>
+	<ul>
+	<li>Aktiv utvikling av Mozilla</li>
+	<li>Ikke SQL basert</li>
+	<li>JavaScript objektlager med indekser</li>
+	<li>Asynkron interaksjon</li>
+	<li><a href="http://www.w3.org/TR/IndexedDB/">http://www.w3.org/TR/IndexedDB/</a></li>
+	</ul>        
+      </section>
 
 
       <section>
