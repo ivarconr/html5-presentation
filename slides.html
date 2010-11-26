@@ -3,6 +3,7 @@
   <head>
     <script src="html5-chatclient/scripts/jquery-1.4.4.min.js"></script>
     <script src="html5-chatclient/scripts/jquery-ui.min.js"></script>
+    <script src="script/smoothie.js" type="text/javascript"></script>
     <script src="script/dragdrop.js"></script>
     <script src="script/slide.js" type="text/javascript"></script>
     <meta charset="utf-8">
@@ -21,33 +22,131 @@
 
 Kristoffer-slides
 
--->		<section>
+-->
+
+        <section>
+            <h2>HTML5</h2>
+	    <pre>
+&#8249;!DOCTYPE html&#8250;
+&#8249;html&#8250;
+  &#8249;head&#8250;
+    &#8249;meta charset="utf-8"&#8250;
+  &#8249;/head&#8250;
+  &#8249;p&#8250;Inhhold her&#8249;/p&#8250;
+&#8249;/html&#8250;
+</pre>
+        </section>
+		<section>
 			<h1>Hva ER egentlig HTML5?</h1>
             <ul>
+                <li>Samlebegrep for markup og Javascript APIer</li>
+                <li>Bedre støtte for multimedia</li>
                 <li>Standariserer Web 2.0 & RIA</li>
-                <li>Plugin for lyd og video (Flash/Silverlight)</li>
+                <li>Mer "bling"!</li>
             </ul>
 		</section>
+        <section>
+			<h1>HTML5 er ikke en erstatning for</h1>
+            <br />
+            <h1>
+                <img src="images/flash_logo.jpg" height="200" />
+                &nbsp;&nbsp;eller&nbsp;&nbsp;
+                <img src="images/silverlight_detail.jpg" height="200" />
+            </h1>
+        </section>
 		<section>
 			<h1>Hvorfor bry seg om HTML5?</h1>
+            <ul>
+                <li>Færre standarder -> færre bugs, sikrere</li>
+                <li>Kjappere</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
 		</section>
 		<section>
 			<h1>Hva betyr HTML5 for oss utviklere?</h1>
 		</section>
+      <section>
+        <h2>Renere markup</h2>
+      </section>
+        <section>
+            <h1>HTML4</h1>
+            <img src="images/semantic_html4.jpg" width="500px" />
+        </section>
+        <section>
+            <h1>HTML5</h1>
+            <img src="images/html-semantics-2.png" width="500px" />
+        </section>
+        <section>
+            <h3>HTML4 spesifiserer HVA</h3>
+            <h3>HTML5 spesifiserer HVA og HVORDAN</h3>
+        </section>
+        <section>
+			<h1>Hva betyr HTML5 for oss utviklere?</h1>
+            <ul>
+                <li>Mindre hacks</li>
+                <li>Færre standarder å forholde seg til</li>
+                <li>Økt produktivitet</li>
+                <li>Noen nye muligheter</li>
+                <li>Nye, bedre måter å gjøre ting på!</li>
+            </ul>
+        </section>
 		<section>
-			<h1>Nye skjemaelementer</h1>
-			<input type="date" value="2010-11-26" />
-			<input type="time" value="18:00" />
-			<input type="number" min="0" value="4" />
-			<input type="range" min="10" max="20" />
+			<h1>Web Forms 2.0</h1>
+        </section>
+		<section>
+            <h1>Nye attributer</h1>
+            <p>
+                placeholder<br />
+                autofocus<br />
+                autocomplete<br />
+                list<br />
+                step
+            </p>
+        </section>
+		<section>
+            <h1>Nye skjemaelementer</h1>
+            <p>
+                search, email, url, tel<br />
+                number, range, output <br />
+                datetime, date, month, week, time, datetime-local
+            </p>
+		</section>
+		<section>
+            <input type="text" placeholder="Skriv inn tekst!" /><br />
+			<input type="date" value="2010-11-26" /><br />
+			<input type="time" value="18:00" /><br />
+			<input type="number" min="0" value="4" /><br />
+			<input type="range" min="10" max="20"/><br />
+            <img src="images/input-type-date.png" />
 		</section>
 		<section>
 			<h1>Validering</h1>
 		</section>
 		<section>
-			<h1>File API</h1>
-			<p>&#8249;input id="uploader" type="file" multiple&#8250;</p>
-			<input id="uploader" type="file" multiple>
+            <h2>required</h2>
+            <h2>maxlength</h2>
+            <h2>pattern</h2>
+            <h2>min</h2>
+            <h2>max</h2>
+		</section>
+		<section>
+            <h2>email.willValidate</h2>
+            <h2>email.validity.valid</h2>
+		</section>
+		<section>
+            <h2>
+                email.onchange + <br />
+                name.onchange + <br />
+                age.onchange = </h2>
+                <br />
+            <h1>form.oninputchange</h1>
+		</section>
+		<section>
+			<h1>Multimedia</h1>
 		</section>
         <section data-onload="playAudio" data-onunload="pauseAudio">
             <script type="text/javascript">
@@ -58,69 +157,53 @@ Kristoffer-slides
                     section.querySelector("audio").pause();
                 }
             </script>
-			<h1>Lyd</h1>
+	        <h1>Lyd</h1>
             <audio controls autobuffer preload src="media/01-snook_-_snook_svett_och_tarar.mp3"></audio>
-		</section>
-      <section data-onload="playVideo"
-               data-onunload="stopVideo">
-        <script type="text/javascript">
-            function playVideo(section) {
-                section.querySelector("video").play();
-            }
-            function stopVideo(section) {
-                section.querySelector("video").pause();
-            }
-        </script>
-        <h1>A video</h1>
-        <video controls autobuffer preload src="http://demos.hacks.mozilla.org/openweb/LONDONPROJECT/fight.ogv"></video>
-      </section>		<section>
-			<h1>Video</h1>
-		</section>
-		<section>
+        </section>
+        <section data-onload="playVideo"
+                data-onunload="stopVideo">
+            <script type="text/javascript">
+                function playVideo(section) {
+                    section.querySelector("video").play();
+                }
+                function stopVideo(section) {
+                    section.querySelector("video").pause();
+                }
+            </script>
+            <h1>Video</h1>
+            <video controls autobuffer preload src="http://demos.hacks.mozilla.org/openweb/LONDONPROJECT/fight.ogv"></video>
+        </section>
+		<section data-onload="startChart">
 			<h1>Canvas</h1>
+            <canvas id="mycanvas" width="600" height="250"></canvas>
+            <script>
+
+                // Random data
+                var line1 = new TimeSeries();
+                var line2 = new TimeSeries();
+                setInterval(function () {
+                    line1.append(new Date().getTime(), Math.random());
+                    line2.append(new Date().getTime(), Math.random());
+                }, 1000);
+
+                var smoothie = new SmoothieChart({ grid: { strokeStyle: 'rgb(125, 0, 0)', fillStyle: 'rgb(60, 0, 0)', lineWidth: 1, millisPerLine: 250, verticalSections: 6} });
+                smoothie.addTimeSeries(line1, { strokeStyle: 'rgb(0, 255, 0)', fillStyle: 'rgba(0, 255, 0, 0.4)', lineWidth: 3 });
+                smoothie.addTimeSeries(line2, { strokeStyle: 'rgb(255, 0, 255)', fillStyle: 'rgba(255, 0, 255, 0.3)', lineWidth: 3 });
+
+
+                function startChart() {
+                    smoothie.streamTo(document.getElementById("mycanvas"), 1000);
+                }
+            </script>
+            <p>
+                <a href="http://www.chromeexperiments.com/detail/rumpetroll/">Rumpetroll</a> |
+                <a href="http://www.chromeexperiments.com/detail/biolab-disaster/">Biolab disaster</a> |
+                <a href="http://www.chromeexperiments.com/detail/the-wilderness-downtown/">The Wilderness Downtown</a>
+            </p>
 		</section>
 		<section>
 			<h1>Hva kan man ta i bruk allerede nå?</h1>
-			
 		</section>
-
-      <section>
-        <h1>HTML5</h1>
-	<pre>
-&#8249;!DOCTYPE html&#8250;
-&#8249;html&#8250;
-  &#8249;head&#8250;
-    &#8249;meta charset="utf-8"&#8250;
-  &#8249;/head&#8250;
-  &#8249;p&#8250;Inhhold her&#8249;/p&#8250;
-&#8249;/html&#8250;
-</pre>
-      </section>
-
-      <section>
-        <h1>HTML4</h1>
-        <img src="images/semantic_html4.jpg" width="500px" />
-      </section>
-
-      <section>
-        <h1>HTML5</h1>
-        <img src="images/html-semantics-2.png" width="500px" />
-      </section>
-
-      <section data-onload="playVideo"
-               data-onunload="stopVideo">
-        <script>
-          // |section| referes to this section element
-          function playVideo(section) {
-            section.querySelector("video").play();
-          }
-          function stopVideo(section) {
-            section.querySelector("video").pause();
-          }
-        </script>
-        <h1>A video</h1>
-        <video controls autobuffer preload src="http://demos.hacks.mozilla.org/openweb/LONDONPROJECT/fight.ogv"></video>
-      </section>
 
 <!--
 
@@ -273,18 +356,10 @@ webdb.db = openDatabase('chat', '1.0', 'post mangager', dbSize);
       </section>
 
 
-      <section>
-        <h1>Some code?</h1>
-        <pre>
-window.onload = function() {
-  foobar();
-  alert("mop");
-}</pre>
-      </section>
-
-
 
       <section>
+        <img src="images/html5-elvis.jpg" />
+        <br />
         <p>the end :)</p>
       </section>
 
